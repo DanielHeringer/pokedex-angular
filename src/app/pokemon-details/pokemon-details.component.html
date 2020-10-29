@@ -1,0 +1,24 @@
+<div class="personalizedContainer">
+
+  <div class="row">
+
+  </div>
+  <div class="row">
+    <div  *ngFor="let moves of pokemonDetails?.moves">
+        <div class="col-sm">
+            <button class="btn btn-primary" type="button" (click)="moveCollapse[moves.move.name]=!moveCollapse[moves.move.name]">
+                {{ moves.move.name | hyphenToSpace | titlecase }}
+            </button>
+          </div>
+          <div *ngIf="moveCollapse[moves.move.name]">
+            <div class="card card-body mb-2">
+                <app-move-details [moveUrl]="moves.move.url"></app-move-details>
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="row">
+
+  </div>
+
+</div>

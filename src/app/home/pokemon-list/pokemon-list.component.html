@@ -1,0 +1,10 @@
+<div [routerLink]="['/pokemon/' + pokemon.name]" class="card" *ngFor="let pokemon of pokemons">
+  <img src="../../../assets/loading.gif" class="loadingGif" *ngIf="pokemonImgLoading[pokemon.name]" alt="">
+  <img [src]="getImageUrl(pokemon.url)" class="card-img-top" (load)="disableLoading(pokemon.name);" [style.visibility]="getVisibility(pokemon.name)" alt="">
+
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ pokemon.name | titlecase }}
+    </h5>
+  </div>
+</div>
