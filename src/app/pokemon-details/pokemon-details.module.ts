@@ -7,6 +7,7 @@ import { PokemonDetailsService } from './pokemon-details.service';
 import { MoveDetailsComponent } from './move-details/move-details.component';
 import { MoveDetailsService } from './move-details/move-details.service';
 import { SubHyphenSpaceModule } from './../pipes/sub-hyphen-space/sub-hyphen-space.module';
+import { EffectChancePipeModule } from './../pipes/effect-chance/effect-chance.module';
 
 @NgModule({
   declarations: [
@@ -14,9 +15,10 @@ import { SubHyphenSpaceModule } from './../pipes/sub-hyphen-space/sub-hyphen-spa
     MoveDetailsComponent
   ],
   imports: [
-    CommonModule,
+  CommonModule,
     BrowserModule,
-    SubHyphenSpaceModule
+    SubHyphenSpaceModule,
+    EffectChancePipeModule
   ],
   providers: [
     PokemonDetailsService,

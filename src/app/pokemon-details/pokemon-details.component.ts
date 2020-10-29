@@ -10,9 +10,10 @@ import { PokemonDetails } from './../models/pokemonDetails';
 })
 export class PokemonDetailsComponent implements OnInit {
 
-  imgUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
+  imgUrl = 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/';
   pokemonName: string;
   pokemonDetails: PokemonDetails;
+  pokemonImgLoading: boolean = true;
 
   moveCollapse: boolean[] = [];
 
@@ -31,8 +32,15 @@ export class PokemonDetailsComponent implements OnInit {
       for(let move of this.pokemonDetails.moves){
         this.moveCollapse[move.move.name] = false;
       }
-      console.log(this.pokemonDetails)
     });
+  }
+
+  getPokemonImg(id: number){
+    return this.imgUrl + this.zeroPad(id, 3) + '.png';
+  }
+  zeroPad(num: number, places: number) {
+    let zero = places - num?.toString().length + 1;
+    return Array(+(zero > 0 && zero)).join("0") + num;
   }
 
 }

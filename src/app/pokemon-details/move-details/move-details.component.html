@@ -1,4 +1,12 @@
-<img src="../../../assets/loading.gif" *ngIf="loading" class="loadingGif" alt="">
-{{
-    moveDetails?.description
-}}
+<img src="../../../assets/loading.gif" *ngIf="loading" class="loadingGif" alt=""><div class="row">
+<div class="col-sm">
+        <ul>
+            <li>Power: {{ moveDetails?.power ? moveDetails?.power : 'NaN'}}</li>
+            <li>PP: {{ moveDetails?.pp  ? moveDetails?.pp : 'NaN' }}</li>
+            <li>Accuracy: {{ moveDetails?.accuracy  ? moveDetails?.accuracy : 'NaN' }}</li>
+        </ul>
+    </div>
+    <div class="col-sm">
+        {{ moveDetails?.description | effectChance: moveDetails?.effect_chance }}
+    </div>
+</div>
