@@ -1,32 +1,31 @@
 <div class="container">
-
-  <div class="row mb-5" id="profile">
-    <div class="col align-self-center">
-      <div class="imgSection">
-        <img src="../../../assets/loading.gif" class="loadingGif" *ngIf="pokemonImgLoading" alt="">
-        <img class="pokemonImg" [src]="getPokemonImg(pokemonDetails?.id)" (load)="pokemonImgLoading = false" alt="">
+  <div class="row">
+    <div class="col-sm">
+      <app-profile-details [pokemonDetails]="pokemonDetails"></app-profile-details>
+    </div>
+  </div>
+  <div class="row">
+      <div class="card text-left w-100">
+        <div class="card-body">
+          <h5 class="card-text">
+            Moves
+          </h5>
+        </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-action" *ngFor="let moves of pokemonDetails?.moves" (click)="moveCollapse[moves.move.name]=!moveCollapse[moves.move.name]">
+                  <h6 class="card-text m-0">
+                    <span *ngIf="!moveCollapse[moves.move.name]">&#9656;</span>
+                    <span *ngIf="moveCollapse[moves.move.name]">&#9662;</span>
+                    {{ moves.move.name | hyphenToSpace | titlecase }}
+                  </h6>
+                <div class="card-text mt-2" *ngIf="moveCollapse[moves.move.name]" [@slideIn]>
+                      <app-move-details [moveUrl]="moves.move.url"></app-move-details>
+                </div>
+            </li>
+          </ul>
       </div>
-    </div>
-    <div class="col-6">dsadas</div>
-    <div class="col-3">sadasd</div>
   </div>
-  <div class="row">
-    <div class="card text-left w-100">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item list-group-item-action" *ngFor="let moves of pokemonDetails?.moves" (click)="moveCollapse[moves.move.name]=!moveCollapse[moves.move.name]">
-              <h5 class="card-text m-0">
-                <span *ngIf="!moveCollapse[moves.move.name]">&#9656;</span>
-                <span *ngIf="moveCollapse[moves.move.name]">&#9662;</span>
-                {{ moves.move.name | hyphenToSpace | titlecase }}
-              </h5>
-            <div class="card-text mt-2" *ngIf="moveCollapse[moves.move.name]">
-                  <app-move-details [moveUrl]="moves.move.url"></app-move-details>
-            </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="row">
+  <div class="row mb-5">
 
   </div>
 

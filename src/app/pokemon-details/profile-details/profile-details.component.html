@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-sm">
+        <div class="imgSection">
+            <img src="../../../assets/loading.gif" class="loadingGif" *ngIf="pokemonImgLoading" alt="">
+            <img class="pokemonImg" [src]="getPokemonImg(pokemonDetails?.id)" (load)="pokemonImgLoading = false" alt="">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <h3 class="col-sm">
+        <span class="align-middle mr-2">
+            {{ pokemonDetails?.name | titlecase }} #{{ pokemonDetails?.id }}
+        </span>
+    </h3>
+</div>
+<div class="row mb-4">
+    <div class="col-sm">
+        <span *ngFor="let type of pokemonDetails?.types">
+            <span class="typeBox" [style.background-color]="typesColor[type.type.name]">
+                {{ type.type.name }}
+            </span>
+        </span>
+    </div>
+</div>
+<div class="row mb-4">
+    <div class="col-sm">
+        <div class="stats">
+            anfoasijfs
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="stats">
+            anfoasijfs
+        </div>
+    </div>
+</div>
+<div class="row mb-4">
+    <div class="col-sm">
+        <div class="abilities">sadasd</div>
+    </div>
+    <div class="col-sm">
+        <div class="abilities">sadasd</div>
+    </div>
+
+</div>

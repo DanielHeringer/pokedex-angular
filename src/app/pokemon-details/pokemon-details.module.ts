@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PokemonDetailsComponent } from './pokemon-details.component';
 import { PokemonDetailsService } from './pokemon-details.service';
@@ -8,15 +9,18 @@ import { MoveDetailsComponent } from './move-details/move-details.component';
 import { MoveDetailsService } from './move-details/move-details.service';
 import { SubHyphenSpaceModule } from './../pipes/sub-hyphen-space/sub-hyphen-space.module';
 import { EffectChancePipeModule } from './../pipes/effect-chance/effect-chance.module';
+import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 
 @NgModule({
   declarations: [
     PokemonDetailsComponent,
-    MoveDetailsComponent
+    MoveDetailsComponent,
+    ProfileDetailsComponent
   ],
   imports: [
-  CommonModule,
+    CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     SubHyphenSpaceModule,
     EffectChancePipeModule
   ],

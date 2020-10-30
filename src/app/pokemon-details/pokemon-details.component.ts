@@ -2,18 +2,31 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonDetailsService } from './pokemon-details.service';
 import { PokemonDetails } from './../models/pokemonDetails';
+import {style, state, animate, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-pokemon-details',
   templateUrl: './pokemon-details.component.html',
-  styleUrls: ['./pokemon-details.component.scss']
+  styleUrls: ['./pokemon-details.component.scss'],
+  animations: [
+    trigger('slideIn', [
+    state('*', style({ 'overflow': 'hidden' })),
+    state('void', style({ 'overflow': 'hidden' })),
+    transition('* => void', [
+      style({ height: '*' }),
+      animate(250, style({ height: 0 }))
+    ]),
+    transition('void => *', [
+      style({ height: '0' }),
+      animate(250, style({ height: '*' }))
+    ])
+  ])
+  ]
 })
 export class PokemonDetailsComponent implements OnInit {
 
-  imgUrl = 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/';
   pokemonName: string;
   pokemonDetails: PokemonDetails;
-  pokemonImgLoading: boolean = true;
 
   moveCollapse: boolean[] = [];
 
@@ -33,14 +46,6 @@ export class PokemonDetailsComponent implements OnInit {
         this.moveCollapse[move.move.name] = false;
       }
     });
-  }
-
-  getPokemonImg(id: number){
-    return this.imgUrl + this.zeroPad(id, 3) + '.png';
-  }
-  zeroPad(num: number, places: number) {
-    let zero = places - num?.toString().length + 1;
-    return Array(+(zero > 0 && zero)).join("0") + num;
   }
 
 }
