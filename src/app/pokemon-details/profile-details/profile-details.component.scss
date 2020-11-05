@@ -8,15 +8,16 @@
     padding: 0;
     margin: 0;
 }
+.progress{
+    height: 15px;
+}
+.progress-bar{
+    background-color: black;
+}
 .row {
     // border: 1px solid black;
 }
-
-.typeBox{
-    display: inline-block;
-    font-size: 15px;
-    width: 70px;
-    background-color: brown;
-    color: white;
-    padding: 3px;
+ul {
+    list-style-type: none;
+    padding: 0;
 }

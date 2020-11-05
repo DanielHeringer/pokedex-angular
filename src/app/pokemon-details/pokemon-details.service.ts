@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PokemonDetails } from '../models/pokemonDetails';
+import { PokemonDetails } from '../models/PokemonDetails';
 import { Observable } from 'rxjs';
 
 @Injectable({

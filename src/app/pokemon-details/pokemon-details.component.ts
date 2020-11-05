@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonDetailsService } from './pokemon-details.service';
-import { PokemonDetails } from './../models/pokemonDetails';
+import { PokemonDetails } from '../models/PokemonDetails';
 import {style, state, animate, transition, trigger} from '@angular/animations';
 
 @Component({

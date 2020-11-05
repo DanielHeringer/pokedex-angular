@@ -19,8 +19,8 @@ export class PokemonDetails{
         this.is_default = obj.is_default;
         this.location_area_encounters = obj.location_area_encounters;
         this.base_experience = obj.base_experience;
-        this.height = obj.height;
-        this.weight = obj.weight;
+        this.height = obj.height/10;
+        this.weight = obj.weight/10;
         this.abilities = obj.abilities;
         this.stats = obj.stats;
         this.types = obj.types;
