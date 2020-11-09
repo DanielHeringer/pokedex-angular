@@ -10,16 +10,20 @@ import { MoveDetailsService } from './move-details/move-details.service';
 import { SubHyphenSpaceModule } from './../pipes/sub-hyphen-space/sub-hyphen-space.module';
 import { EffectChancePipeModule } from './../pipes/effect-chance/effect-chance.module';
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     PokemonDetailsComponent,
     MoveDetailsComponent,
-    ProfileDetailsComponent
+    ProfileDetailsComponent,
   ],
   imports: [
     CommonModule,
     BrowserModule,
+    FormsModule,
+    RouterModule,
     BrowserAnimationsModule,
     SubHyphenSpaceModule,
     EffectChancePipeModule

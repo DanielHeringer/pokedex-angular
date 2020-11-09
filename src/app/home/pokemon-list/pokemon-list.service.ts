@@ -14,6 +14,9 @@ export class PokemonListService {
                   "fairy","fighting","flying","ghost",
                   "ground","normal","grass" ,"fire","poison",
                   "psychic","rock", "steel","ice","water"];
+  pokemons = [];
+  maxPokemonNumber = 893;
+
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
 
@@ -25,6 +28,12 @@ export class PokemonListService {
   getPokemonList(limit: number, offset: number): Observable<PokemonList>{
     return this.httpClient.get<PokemonList>(this.baseUrl + 'pokemon?limit='+ limit + '&offset=' + offset);
   }
+
+  getAllPokemons(){
+    return this.httpClient.get<PokemonList>(this.baseUrl + 'pokemon?limit='+ this.maxPokemonNumber);
+  }
+
+  getAllPokemon
 
   getTypeByName(typeName: string): Observable<PokemonType>{
     return this.httpClient.get<PokemonType>(this.baseUrl + 'type/' + typeName);

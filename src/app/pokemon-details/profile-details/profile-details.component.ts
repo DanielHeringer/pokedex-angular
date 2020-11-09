@@ -21,7 +21,6 @@ export class ProfileDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   getPokemonImg(id: number){
     return this.imgUrl + this.zeroPad(id, 3) + '.png';
   }
