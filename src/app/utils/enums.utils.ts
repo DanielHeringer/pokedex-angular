@@ -18,3 +18,25 @@ export enum types_color_enum {
     ice="#98D8D8",
     water="#6890F0"
 }
+
+export enum pokemon_types {
+    all='all',
+    bug='bug',
+    dark='dark',
+    dragon='dragon',
+    electric='electric',
+    fairy='fairy',
+    fighting='fighting',
+    flying='flying',
+    ghost='ghost',
+    ground='ground',
+    normal='normal',
+    grass='grass',
+    fire='fire',
+    poison='poison',
+    psychic='psychic',
+    rock='rock',
+    steel='steel',
+    ice='ice',
+    water='water'
+}

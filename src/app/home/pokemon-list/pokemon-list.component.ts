@@ -3,6 +3,9 @@ import { PokemonListService } from './pokemon-list.service';
 import { Pokemon, PokemonList } from './../../models/Pokemon';
 import { Subscription } from 'rxjs';
 import { NavbarService } from './../../navbar/navbar.service';
+import { SearchOptions } from './../../models/SearchOptions';
+import { pokemon_types } from 'src/app/utils/enums.utils';
+import { PokemonType } from './../../models/PokemonTypes';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -22,8 +25,8 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   offset: number = 0;
   maxPokemonNumber = 893;
 
-  searchText: string = '';
-  searchTextSubscription: Subscription;
+  searchOptions: SearchOptions;
+  searchOptionsSubscription: Subscription;
 
 
   imgUrl = 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/';
@@ -32,9 +35,8 @@ export class PokemonListComponent implements OnInit, OnDestroy {
           private navbarService: NavbarService) { }
 
   ngOnInit(): void {
-    this.getPokemonList();
-    this.searchTextSubscription = this.navbarService.getSearchText().subscribe((textSearch) =>{
-      this.searchText = textSearch;
+    this.searchOptionsSubscription = this.navbarService.getSearchOptions().subscribe((_searchOptions) =>{
+      this.searchOptions = _searchOptions;
       this.searchPokemon();
     })
 
@@ -42,7 +44,7 @@ export class PokemonListComponent implements OnInit, OnDestroy {
 
   onScroll(): void {
     this.loadMore();
-    if(this.offset < this.maxPokemonNumber && this.searchText === ''){
+    if(this.offset < this.maxPokemonNumber && this.searchOptions.searchText === '' && this.searchOptions.searchType == pokemon_types.all){
       this.getPokemonList();
     }
   }
@@ -61,26 +63,44 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   }
 
   searchPokemon(){
-    console.log(this.searchText)
-    if(this.searchText == ''){
-      this.pokemonList = [];
+    this.pokemonList = [];
+    if(this.searchOptions.searchText == '' && this.searchOptions.searchType == pokemon_types.all){
       this.resetOffset();
       this.getPokemonList();
     }
     else{
-      this.pokemonList = [];
-      this.pokemonListService.getAllPokemons().subscribe( allPokemons => {
-        for(let pokemon of allPokemons.results){
-          if(pokemon.name.search(this.searchText) != -1){
-            this.pokemonList.push(pokemon);
+      if(this.searchOptions.searchType == pokemon_types.all){
+        this.pokemonListService.getAllPokemons().subscribe( allPokemons => {
+          for(let pokemon of allPokemons.results){
+            if(pokemon.name.search(this.searchOptions.searchText) != -1){
+              this.pokemonList.push(pokemon);
+            }
           }
-        }
-      })
+        })
+      }
+      else{
+        this.pokemonListService.getPokemonsByType(this.searchOptions.searchType).subscribe( pokemonTypeRequest => {
+          let pokemonType = new PokemonType(pokemonTypeRequest);
+          for(let pokemon of pokemonType.pokemons){
+            if(pokemon.name.search(this.searchOptions.searchText) != -1){
+              if(this.getIdFromUrl(pokemon.url) < 893){
+                this.pokemonList.push(pokemon);
+              }
+            }
+          }
+        })
+      }
     }
   }
 
   disableLoading(pokemonName: string){
     this.pokemonImgLoading[pokemonName]=false
+  }
+
+  getIdFromUrl(url: string): number{
+    let splittedUrl = url.split('/');
+    let id = splittedUrl[splittedUrl.length-2];
+    return parseInt(id);
   }
 
   getVisibility(pokemonName: string){
@@ -115,6 +135,6 @@ export class PokemonListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.searchTextSubscription.unsubscribe();
+    this.searchOptionsSubscription.unsubscribe();
   }
 }

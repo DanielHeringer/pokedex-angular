@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { PokemonList } from '../../models/Pokemon';
 import { PokemonType } from '../../models/PokemonTypes';
+import { pokemon_types } from 'src/app/utils/enums.utils';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,6 @@ import { PokemonType } from '../../models/PokemonTypes';
 export class PokemonListService {
 
   baseUrl = 'https://pokeapi.co/api/v2/'; // api rest
-  pokemonTypes = ["bug","dark","dragon","electric",
-                  "fairy","fighting","flying","ghost",
-                  "ground","normal","grass" ,"fire","poison",
-                  "psychic","rock", "steel","ice","water"];
   pokemons = [];
   maxPokemonNumber = 893;
 
@@ -33,19 +30,8 @@ export class PokemonListService {
     return this.httpClient.get<PokemonList>(this.baseUrl + 'pokemon?limit='+ this.maxPokemonNumber);
   }
 
-  getAllPokemon
-
-  getTypeByName(typeName: string): Observable<PokemonType>{
-    return this.httpClient.get<PokemonType>(this.baseUrl + 'type/' + typeName);
-  }
-
-  getAllTypes(): Observable<PokemonType>[]{
-    let types = [];
-    for(let typeName of this.pokemonTypes){
-      types[typeName] = this.getTypeByName(typeName);
-    }
-    console.log(types)
-    return types
+  getPokemonsByType(type: pokemon_types): Observable<PokemonType>{
+    return this.httpClient.get<PokemonType>(this.baseUrl + 'type/'+ type);
   }
 
   // Manipulação de erros

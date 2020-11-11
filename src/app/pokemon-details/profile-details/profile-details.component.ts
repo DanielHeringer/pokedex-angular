@@ -12,7 +12,7 @@ export class ProfileDetailsComponent implements OnInit {
   @Input()
   pokemonDetails: PokemonDetails;
   imgUrl = 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/';
-  // imgUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
+
   pokemonImgLoading: boolean = true;
   typesColor = types_color_enum;
 

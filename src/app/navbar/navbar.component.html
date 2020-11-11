@@ -9,9 +9,22 @@
           <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
         </li> -->
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" (keyup)="onSearchChange(searchText)" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      <form class="form-inline my-2 my-lg-0" >
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          (keyup)="onSearchTextChange(searchOptions.searchText)"
+          [(ngModel)]="searchOptions.searchText"
+          [ngModelOptions]="{standalone: true}">
+        <select
+          class="form-control form-control"
+          (change)="onSearchTypeChange(searchOptions.searchType)"
+          [(ngModel)]="searchOptions.searchType"
+          [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let pokemonType of pokemonTypes | keyvalue" [value]="pokemonType.value"> {{ pokemonType.value | titlecase }}</option>
+        </select>
       </form>
     </div>
   </nav>

@@ -1,20 +1,26 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { pokemon_types } from '../utils/enums.utils';
+import { SearchOptions } from './../models/SearchOptions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NavbarService {
 
-  searchText = new BehaviorSubject('');
+  _defaultSearchOptions: SearchOptions = {
+    searchText: '',
+    searchType: pokemon_types.all
+  }
+  searchOptions = new BehaviorSubject(this._defaultSearchOptions);
 
   constructor() { }
 
-  getSearchText(): Observable<string>{
-    return this.searchText.asObservable();
+  getSearchOptions(): Observable<SearchOptions>{
+    return this.searchOptions.asObservable();
   }
 
-  changeSearchText(searchText: string){
-    this.searchText.next(searchText);
+  changeSearchOptions(searchOptions: SearchOptions){
+    this.searchOptions.next(searchOptions);
   }
 }
