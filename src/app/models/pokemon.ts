@@ -1,13 +1,11 @@
 export class PokemonList {
-
-    count: number;
-    next: string;
-    previus: string;
-    results: [Pokemon]
-
+  count: number;
+  next: string;
+  previus: string;
+  results: [Pokemon];
 }
 
-export class Pokemon{
-    name: string;
-    url: string;
+export class Pokemon {
+  name: string;
+  url: string;
 }

@@ -6,17 +6,17 @@ import { PokemonDetailsComponent } from './pokemon-details/pokemon-details.compo
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'pokemon/:name',
-    component: PokemonDetailsComponent
+    component: PokemonDetailsComponent,
   },
-  { path: '**', component: HomeComponent },  // Wildcard route for a 404 page
+  { path: '**', component: HomeComponent }, // Wildcard route for a 404 page
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

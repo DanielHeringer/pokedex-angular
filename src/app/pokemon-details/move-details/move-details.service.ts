@@ -4,14 +4,12 @@ import { Observable } from 'rxjs';
 import { MoveDetails } from 'src/app/models/MoveDetails';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MoveDetailsService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) { }
-
-
-  getMoveDetail(url: string): Observable<MoveDetails>{
+  getMoveDetail(url: string): Observable<MoveDetails> {
     return this.httpClient.get<MoveDetails>(url);
   }
 }

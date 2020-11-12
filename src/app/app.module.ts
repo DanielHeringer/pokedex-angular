@@ -15,12 +15,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NavbarService } from './navbar/navbar.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-  ],
+  declarations: [AppComponent, NavbarComponent],
   imports: [
-  CommonModule,
+    CommonModule,
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
@@ -30,9 +27,7 @@ import { NavbarService } from './navbar/navbar.service';
     RouterModule,
     PokemonDetailsModule,
   ],
-  providers: [
-    NavbarService
-  ],
-  bootstrap: [AppComponent]
+  providers: [NavbarService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -10,10 +10,7 @@ import { HomeService } from './home.service';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    PokemonListComponent,
-  ],
+  declarations: [HomeComponent, PokemonListComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -21,9 +18,6 @@ import { FormsModule } from '@angular/forms';
     SubHyphenSpaceModule,
     InfiniteScrollModule,
   ],
-  providers: [
-    PokemonListService,
-    HomeService
-  ]
+  providers: [PokemonListService, HomeService],
 })
-export class HomeModule { }
+export class HomeModule {}

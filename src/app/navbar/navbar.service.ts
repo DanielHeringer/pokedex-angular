@@ -4,23 +4,22 @@ import { pokemon_types } from '../utils/enums.utils';
 import { SearchOptions } from './../models/SearchOptions';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NavbarService {
-
   _defaultSearchOptions: SearchOptions = {
     searchText: '',
-    searchType: pokemon_types.all
-  }
+    searchType: pokemon_types.all,
+  };
   searchOptions = new BehaviorSubject(this._defaultSearchOptions);
 
-  constructor() { }
+  constructor() {}
 
-  getSearchOptions(): Observable<SearchOptions>{
+  getSearchOptions(): Observable<SearchOptions> {
     return this.searchOptions.asObservable();
   }
 
-  changeSearchOptions(searchOptions: SearchOptions){
+  changeSearchOptions(searchOptions: SearchOptions) {
     this.searchOptions.next(searchOptions);
   }
 }

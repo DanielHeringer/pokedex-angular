@@ -26,11 +26,8 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     BrowserAnimationsModule,
     SubHyphenSpaceModule,
-    EffectChancePipeModule
+    EffectChancePipeModule,
   ],
-  providers: [
-    PokemonDetailsService,
-    MoveDetailsService
-  ]
+  providers: [PokemonDetailsService, MoveDetailsService],
 })
-export class PokemonDetailsModule { }
+export class PokemonDetailsModule {}
