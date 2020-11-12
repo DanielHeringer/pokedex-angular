@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "predeploy": "yarn build",
-    "deploy": "ngh --dir dist/pokedex --branch=master"
+    "deploy": "ngh --dir dist/pokedex --branch=githubpage"
   },
   "private": true,
   "dependencies": {
